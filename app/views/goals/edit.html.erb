@@ -1,0 +1,13 @@
+<h1>Edit goal</h1>
+<p>for <%=@goal.author.username%></p>
+
+<% if @goal.author == current_user %>
+<form action="<%=goals_url%>" method="post">
+  <input type="hidden" name="method" value="PATCH">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label>Title:
+  <input type="text" id="title" name="goal[title]" value="<%=@goal.title%>"></label>
+  <input type="submit" name="" value="Add Goal">
+</form>
+<% else %>
+<p>Cannot edit someone else's goal!</p>

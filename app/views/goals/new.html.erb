@@ -1,0 +1,9 @@
+<h1>New goal</h1>
+<p>for <%=current_user.username%></p>
+
+<form action="<%=goals_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <label>Title:
+  <input type="text" id="title" name="goal[title]" value="<%=@goal.title%>"></label>
+  <input type="submit" name="" value="Add Goal">
+</form>

@@ -1,0 +1,9 @@
+<h1>Hi, your username is <%=@user.username%>!</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+
+<ul>
+<% @user.goals.each do |goal| %>
+<li><%=goal.title%></li>
+<% end %>
+</ul>
+<%= link_to "Add Goal", new_goal_url %>
