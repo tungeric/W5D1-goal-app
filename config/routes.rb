@@ -1,12 +1,21 @@
 Rails.application.routes.draw do
-  resources :users do
-    resources :user_comments, only: [:index]
-  end
+  get 'comments/new'
+
+  get 'comments/create'
+
+  get 'comments/edit'
+
+  get 'comments/update'
+
+  get 'comments/index'
+
+  get 'comments/show'
+
+  get 'comments/destroy'
+
+  resources :users
   resource :session
-  resources :goals do
-    resources :goal_comments, only: [:index]
-  end
-  resources :user_comments, except: [:index]
-  resources :goal_comments, except: [:index]
+  resources :goals
+  resources :comments
 
 end

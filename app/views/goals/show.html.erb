@@ -2,4 +2,19 @@
 <p><%=@goal.title%></p>
 <br>
 
+<h2>Comments</h2>
+<% @goal.comments.each do |comment| %>
+<li><%=comment.body%></li>
+<% end %>
+</ul>
+
+<form action="<%=comments_url%>" method="post">
+  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+  <input type="hidden" name="comment[commentable_type]" value="Goal">
+  <input type="hidden" name="comment[commentable_id]" value="<%=@goal.id%>">
+  <label>Username:
+    <textarea name="comment[body]"></textarea>
+  <input type="submit" name="" value="Add Comment">
+</form>
+
 <%= link_to "Go Back to User", user_url(@goal.user_id) %>

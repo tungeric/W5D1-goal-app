@@ -11,24 +11,22 @@
 #
 
 class User < ApplicationRecord
+  include Commentable
+
   validates :password_digest, :session_token, presence: true
   validates :username, presence: true, uniqueness: true
   validates :password, length: {minimum: 6, allow_nil: true}
   after_initialize :ensure_session_token
 
+
   attr_reader :password
 
   has_many :goals
 
-  has_many :user_comments,
-    primary_key: :id,
-    foreign_key: :user_id,
-    class_name: :UserComment
-
   has_many :authored_comments,
     primary_key: :id,
-    foreign_key: :author,
-    class_name: :UserComment
+    foreign_key: :author_id,
+    class_name: :Comment
 
   def password=(password)
     @password = password
