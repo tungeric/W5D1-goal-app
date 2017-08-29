@@ -9,16 +9,3 @@
 
 <%= link_to "Add Goal", new_goal_url %>
 <br><br>
-<h2>Comments: </h2>
-<ul>
-<% @user.user_comments.each do |user_comment| %>
-<li><%=user_comment.body%></li>
-<% end %>
-</ul>
-<form action="<%=user_comments_url%>" method="post">
-  <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-  <input type="hidden" name="user_comment[user_id]" value="<%=@user.id%>">
-  <label>Add Comment:
-    <textarea name="user_comment[body]" value=""></textarea></label>
-  <input type="submit" name="" value="Add Comment">
-</form>
